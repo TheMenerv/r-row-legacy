@@ -1,0 +1,68 @@
+import config from "../../../config.json";
+
+export let canvas: HTMLCanvasElement = null;
+export let context: CanvasRenderingContext2D = null;
+export let gameScale: number = 1;
+export const WIDTH = config.canvas.width;
+export const HEIGHT = config.canvas.height;
+
+export const getCanvas = () => {
+  if (canvas === null) createCanvas();
+  return canvas;
+};
+
+export const getContext = () => {
+  if (context === null) {
+    context = getCanvas().getContext("2d");
+  }
+  return context;
+};
+
+const createCanvas = () => {
+  canvas = document.createElement("canvas");
+  canvas.id = "game";
+  canvas.width = config.canvas.width;
+  canvas.height = config.canvas.height;
+  if (config.canvas.fullScreen) {
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+  }
+  canvas.tabIndex = 1;
+  const node = document.getElementById(config.canvas.node);
+  node.appendChild(canvas);
+  context = canvas.getContext("2d");
+  context.imageSmoothingEnabled = config.canvas.antiAliasing;
+  canvas.focus();
+};
+
+const resizeCanvas = () => {
+  let width, height;
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+  const gameWidth = config.canvas.width;
+  const gameHeight = config.canvas.height;
+  const ratio = gameWidth / gameHeight;
+  if (windowWidth / windowHeight >= ratio) {
+    gameScale = windowHeight / gameHeight;
+  } else {
+    gameScale = windowWidth / gameWidth;
+  }
+  width = gameWidth * gameScale;
+  height = gameHeight * gameScale;
+  canvas.width = width;
+  canvas.height = height;
+  getContext().scale(gameScale, gameScale);
+  context.imageSmoothingEnabled = config.canvas.antiAliasing;
+};
+
+export const getCanvasPosition = () => {
+  const rect = canvas.getBoundingClientRect();
+  return {
+    x: rect.x,
+    y: rect.y,
+  };
+};
+
+export const setFullScreen = () => {
+  document.getElementById("body").requestFullscreen();
+};

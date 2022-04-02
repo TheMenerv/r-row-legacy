@@ -1,0 +1,15 @@
+{
+  "log_level": "debug",
+  "server": {
+    "url": "http://localhost:3000",
+    "timeout": 5000
+  },
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "fullScreen": true,
+    "node": "body",
+    "antiAliasing": false
+  },
+  "game": {}
+}

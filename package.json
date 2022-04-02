@@ -1,0 +1,47 @@
+{
+  "name": "r-row",
+  "version": "1.0.0",
+  "description": "TypeScript 2D Game Engine",
+  "main": "index.html",
+  "scripts": {
+    "build": "webpack --config webpack/prod.js",
+    "start": "webpack-dev-server --config webpack/base.js --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheMenerv/r-row.git"
+  },
+  "author": "Yoan B. (Menerv)",
+  "license": "CC BY-SA 4.0",
+  "bugs": {
+    "url": "https://github.com/TheMenerv/r-row/issues"
+  },
+  "homepage": "https://github.com/TheMenerv/r-row#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@types/bcrypt": "^5.0.0",
+    "@types/css-font-loading-module": "^0.0.7",
+    "@types/socket.io-client": "^3.0.0",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.5.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "raw-loader": "^4.0.2",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.2.5",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.2",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@types/random-seed": "^0.3.3",
+    "bcrypt": "^5.0.1",
+    "random-seed": "^0.3.0",
+    "socket.io-client": "^4.4.0"
+  }
+}
