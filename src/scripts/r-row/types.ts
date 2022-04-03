@@ -1,7 +1,6 @@
 export type Updatable = {
   update: (dt: number) => void;
   order: number;
-  forced?: boolean;
 };
 
 export type Drawable = {
