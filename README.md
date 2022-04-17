@@ -1,4 +1,4 @@
-![R-ROW](/favicon.ico "R-ROW")
+![R-ROW](/favicon.ico 'R-ROW')
 
 R-ROW (pronounced arrow) is a 2D game engine written in TypeScript.
 
@@ -24,10 +24,10 @@ R-ROW (pronounced arrow) is a 2D game engine written in TypeScript.
 - Automatic game loop with 3 steps (_update_, _draw_ and _drawUI_)
 - Simplest way to read the keyboard and mouse states.
   - Four states for each button/key (_up_, _new_up_, _down_ and _new_down_)
-- A simple logger to log everything you want in development environment with different level (_debug_, _info_, _warn_ and _error_) and keep safe your production environment with auto remove log trace
+- A simple logger to log everything you want in development environment with different level (_debug_, _info_, _warn_ and _error_) and keep your production environment safe with auto remove log trace
 - Integrated development server
 - Compile your game on optimized javascript ES5 to run in all browsers
-- Automatically load assets on the browser and avoid the browser cache problems each you build a new version of your project
+- Automatically load assets on the browser and avoid the browser cache problems each time you build a new version of your project
 - Create and manage sounds, sprites and tile sets/sprite sheets with animations
 - Create and manage different scenes do you need
 - Random generator with seed capability
