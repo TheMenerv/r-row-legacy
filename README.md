@@ -19,7 +19,7 @@ R-ROW (pronounced arrow) is a 2D game engine written in TypeScript.
 ## Features
 
 - Create and fully manage the game canvas
-  - Work with your native resolution and engine can adapt the canvas scaling to take advantage of the full size available on the window
+  - Work with your native resolution that you have defined. Then it is able to automatically adjust the scaling of shown elements so your game can take your full screen length without image distorsion
   - or work on your fixed resolution
 - Automatic game loop with 3 steps (_update_, _draw_ and _drawUI_)
 - Simplest way to read the keyboard and mouse states.
