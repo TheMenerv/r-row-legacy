@@ -1,4 +1,4 @@
-export { logger } from "./logger";
+export { logger } from './logger';
 
 export {
   canvas,
@@ -10,7 +10,7 @@ export {
   getContext,
   getCanvasPosition,
   setFullScreen,
-} from "./canvas";
+} from './canvas';
 
 export {
   dt,
@@ -20,9 +20,9 @@ export {
   removeDrawableToGameLoop,
   addUIDrawableToGameLoop,
   removeUIDrawableToGameLoop,
-} from "./gameLoop";
+} from './gameLoop';
 
-export { addStage, switchStage, popStage } from "./stageDirector";
+export { addStage, switchStage, popStage } from './stageDirector';
 
 export {
   drawSprite,
@@ -38,13 +38,13 @@ export {
   stopAllSounds,
   destroySound,
   destroyAllSounds,
-} from "./assets";
+} from './assets';
 
-export * from "./types";
+export * from './types';
 
-export { getStore, loadAssets } from "./store";
+export { getStore, loadAssets } from './store';
 
-export { getMouse, mouseRecCollision, setCursor, getKeyboard } from "./devices";
+export { getMouse, mouseRecCollision, setCursor, getKeyboard } from './devices';
 
 export {
   getClickable,
@@ -63,15 +63,10 @@ export {
   createNineSlice,
   drawNineSlice,
   drawText,
-} from "./ui";
+} from './ui';
 
-export { random, randomRange } from "./random";
+export { random, randomRange } from './random';
 
-export { drawRoundedRect } from "./primitives";
+export { drawRoundedRect } from './primitives';
 
-export {
-  setServerURL,
-  getSocket,
-  getClients,
-  isServerConnected,
-} from "./network";
+export { setServerURL, getSocket, isServerConnected } from './network';

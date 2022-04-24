@@ -1,6 +1,1 @@
-export {
-  setServerURL,
-  getSocket,
-  getClients,
-  isServerConnected,
-} from "./socket";
+export { setServerURL, getSocket, isServerConnected } from './socket';
