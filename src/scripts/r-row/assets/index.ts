@@ -10,6 +10,7 @@ export {
 export {
   createSound,
   playSound,
+  setVolume,
   stopSound,
   pauseSound,
   pauseAllSounds,

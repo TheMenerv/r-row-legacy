@@ -33,6 +33,7 @@ export {
   updateSpriteSheet,
   createSound,
   playSound,
+  setVolume,
   stopSound,
   pauseSound,
   pauseAllSounds,
