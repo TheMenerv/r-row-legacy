@@ -31,6 +31,7 @@ export {
   createSpriteSheet,
   setAnimation,
   updateSpriteSheet,
+  createSound,
   playSound,
   stopSound,
   pauseSound,

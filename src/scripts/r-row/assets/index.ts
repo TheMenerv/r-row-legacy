@@ -1,13 +1,14 @@
-export { drawSprite, createSprite } from "./sprite";
+export { drawSprite, createSprite } from './sprite';
 
 export {
   drawSpriteSheet,
   createSpriteSheet,
   setAnimation,
   updateSpriteSheet,
-} from "./spriteSheet";
+} from './spriteSheet';
 
 export {
+  createSound,
   playSound,
   stopSound,
   pauseSound,
@@ -15,4 +16,4 @@ export {
   stopAllSounds,
   destroySound,
   destroyAllSounds,
-} from "./sound";
+} from './sound';
