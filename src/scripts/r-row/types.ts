@@ -48,10 +48,20 @@ export interface Animation {
   frames: number[];
 }
 
+export interface TileSet {
+  image: HTMLImageElement;
+  position: { x: number; y: number };
+  scale: { x: number; y: number };
+  tileSetWidth: number;
+  tileSetHeight: number;
+  frameWidth: number;
+  frameHeight: number;
+}
+
 export interface Sound {
   name: string;
   sound: HTMLAudioElement;
-  state: "playing" | "paused" | "stopped";
+  state: 'playing' | 'paused' | 'stopped';
 }
 
 export interface Vector2 {
@@ -70,7 +80,7 @@ export interface Clickable {
   pressed: boolean;
   released: boolean;
   hovered: boolean;
-  state: "normal" | "disabled" | "hovered" | "pressed";
+  state: 'normal' | 'disabled' | 'hovered' | 'pressed';
   x: number;
   y: number;
   width: number;
@@ -111,14 +121,14 @@ export interface InputField {
 
 export interface Mouse {
   position: { x: number; y: number };
-  _state: Record<string, "up" | "down">;
-  state: Record<string, "up" | "new_up" | "down" | "new_down">;
+  _state: Record<string, 'up' | 'down'>;
+  state: Record<string, 'up' | 'new_up' | 'down' | 'new_down'>;
   button: Record<string, boolean>;
 }
 
 export interface Keyboard {
-  _state: Record<string, "up" | "down">;
-  state: Record<string, "up" | "new_up" | "down" | "new_down">;
+  _state: Record<string, 'up' | 'down'>;
+  state: Record<string, 'up' | 'new_up' | 'down' | 'new_down'>;
   keyDown: Record<string, boolean>;
   keyUp: Record<string, boolean>;
 }

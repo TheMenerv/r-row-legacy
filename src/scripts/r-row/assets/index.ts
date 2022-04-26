@@ -7,6 +7,8 @@ export {
   updateSpriteSheet,
 } from './spriteSheet';
 
+export { createTileSet, drawTile } from './tileSet';
+
 export {
   createSound,
   playSound,
