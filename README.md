@@ -2,6 +2,8 @@
 
 R-ROW (pronounced arrow) is a 2D game engine written in TypeScript.
 
+You can see the [source code](https://github.com/TheMenerv/r-row-demo) of a demo project and test it on [itch.io](https://menerv.itch.io/r-row-demo)
+
 ---
 
 ## Installation
