@@ -71,6 +71,19 @@ export {
 
 export { random, randomRange } from './random';
 
-export { drawRoundedRect } from './primitives';
+export {
+  drawRoundedRect,
+  drawLinePoint,
+  drawLineVector,
+  drawCirclePoint,
+  drawCircleVector,
+} from './primitives';
 
 export { setServerURL, getSocket, isServerConnected } from './network';
+
+export {
+  normalizeVector2,
+  distancePoint,
+  distanceVector2,
+  radian,
+} from './math';
