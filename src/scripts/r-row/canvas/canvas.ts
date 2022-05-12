@@ -1,4 +1,4 @@
-import config from "../../../config.json";
+import config from '../../../config.json';
 
 export let canvas: HTMLCanvasElement = null;
 export let context: CanvasRenderingContext2D = null;
@@ -13,25 +13,32 @@ export const getCanvas = () => {
 
 export const getContext = () => {
   if (context === null) {
-    context = getCanvas().getContext("2d");
+    context = getCanvas().getContext('2d');
   }
   return context;
 };
 
 const createCanvas = () => {
-  canvas = document.createElement("canvas");
-  canvas.id = "game";
+  canvas = document.createElement('canvas');
+  canvas.id = 'game';
   canvas.width = config.canvas.width;
   canvas.height = config.canvas.height;
   if (config.canvas.fullScreen) {
     resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener('resize', resizeCanvas);
   }
   canvas.tabIndex = 1;
   const node = document.getElementById(config.canvas.node);
   node.appendChild(canvas);
-  context = canvas.getContext("2d");
+  context = canvas.getContext('2d');
   context.imageSmoothingEnabled = config.canvas.antiAliasing;
+  canvas.focus();
+  window.addEventListener('mousedown', focus);
+  window.addEventListener('touchstart', focus);
+};
+
+const focus = () => {
+  const canvas = getCanvas();
   canvas.focus();
 };
 
@@ -64,5 +71,5 @@ export const getCanvasPosition = () => {
 };
 
 export const setFullScreen = () => {
-  document.getElementById("body").requestFullscreen();
+  document.getElementById('body').requestFullscreen();
 };
