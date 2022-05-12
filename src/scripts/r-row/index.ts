@@ -48,7 +48,15 @@ export * from './types';
 
 export { getStore, loadAssets } from './store';
 
-export { getMouse, mouseRecCollision, setCursor, getKeyboard } from './devices';
+export {
+  getMouse,
+  mouseRecCollide,
+  setCursor,
+  getKeyboard,
+  getTouch,
+  isTouchScreen,
+  touchRecCollide,
+} from './devices';
 
 export {
   getClickable,

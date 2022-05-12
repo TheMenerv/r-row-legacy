@@ -1,6 +1,11 @@
-import { addUpdatableToGameLoop } from "..";
-import { getMouse, mouseRecCollision } from "../devices";
-import { Clickable } from "../types";
+import { addUpdatableToGameLoop } from '..';
+import {
+  getMouse,
+  getTouch,
+  mouseRecCollide,
+  touchRecCollide,
+} from '../devices';
+import { Clickable } from '../types';
 
 let clickables: Record<string, Clickable> = {};
 
@@ -25,7 +30,7 @@ export const createClickable = (
     pressed: false,
     released: false,
     hovered: false,
-    state: "normal",
+    state: 'normal',
     x,
     y,
     width,
@@ -37,7 +42,7 @@ export const createClickable = (
 
 const update = (dt: number) => {
   Object.entries(clickables).forEach(([_, clickable]) => {
-    if (clickable.state === "disabled") {
+    if (clickable.state === 'disabled') {
       clickable.clicked = false;
       clickable.pressed = false;
       clickable.released = false;
@@ -52,20 +57,24 @@ addUpdatableToGameLoop({ update, order: -1000 });
 
 const updateState = (clickable: Clickable) => {
   const mouse = getMouse();
-  const clic = mouse.button.left;
+  const clicM = mouse.button.left;
+  const touch = getTouch();
+  const clicT = touch.isClic;
   let width = clickable.width;
   let height = clickable.height;
   const x = clickable.x - width / 2;
   const y = clickable.y - height / 2;
-  clickable.hovered = mouseRecCollision(x, y, width, height);
+  clickable.hovered =
+    mouseRecCollide(x, y, width, height) ||
+    touchRecCollide(x, y, width, height);
   clickable.pressed = false;
-  if (clickable.hovered && !clic) clickable.state = "hovered";
-  else if (clickable.hovered && clic) {
-    clickable.state = "pressed";
+  if (clickable.hovered && !clicM && !clicT) clickable.state = 'hovered';
+  else if (clickable.hovered && (clicM || clicT)) {
+    clickable.state = 'pressed';
     clickable.pressed = true;
-  } else clickable.state = "normal";
+  } else clickable.state = 'normal';
   clickable.released = !clickable.pressed;
-  clickable.clicked = mouse.state.left === "new_down" && clickable.hovered;
+  clickable.clicked = mouse.state.left === 'new_down' && clickable.hovered;
 };
 
 export const destroyClickable = (clickable: Clickable) => {

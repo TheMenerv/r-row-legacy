@@ -1,7 +1,12 @@
-import { addUpdatableToGameLoop } from "..";
-import { drawSprite } from "../assets";
-import { getMouse, mouseRecCollision } from "../devices";
-import { Button } from "../types";
+import { addUpdatableToGameLoop } from '..';
+import { drawSprite } from '../assets';
+import {
+  getMouse,
+  mouseRecCollide,
+  getTouch,
+  touchRecCollide,
+} from '../devices';
+import { Button } from '../types';
 
 let buttons: Record<string, Button> = {};
 
@@ -25,7 +30,7 @@ export const createButton = (
     pressed: false,
     released: false,
     hovered: false,
-    state: "normal",
+    state: 'normal',
     x,
     y,
     width: 0,
@@ -43,7 +48,7 @@ export const createButton = (
 const update = (dt: number) => {
   Object.entries(buttons).forEach(([_, button]) => {
     updateImagePosition(button);
-    if (button.state === "disabled") {
+    if (button.state === 'disabled') {
       button.clicked = false;
       button.pressed = false;
       button.released = false;
@@ -70,7 +75,9 @@ const updateImagePosition = (button: Button) => {
 
 const updateState = (button: Button) => {
   const mouse = getMouse();
-  const clic = mouse.button.left;
+  const clicM = mouse.button.left;
+  const touch = getTouch();
+  const clicT = touch.isClic;
   let width = button.width;
   let height = button.height;
   if (button.image !== null) {
@@ -79,15 +86,17 @@ const updateState = (button: Button) => {
   }
   const x = button.x - width / 2;
   const y = button.y - height / 2;
-  button.hovered = mouseRecCollision(x, y, width, height);
+  button.hovered =
+    mouseRecCollide(x, y, width, height) ||
+    touchRecCollide(x, y, width, height);
   button.pressed = false;
-  if (button.hovered && !clic) button.state = "hovered";
-  else if (button.hovered && clic) {
-    button.state = "pressed";
+  if (button.hovered && !clicM && !clicT) button.state = 'hovered';
+  else if (button.hovered && (clicM || clicT)) {
+    button.state = 'pressed';
     button.pressed = true;
-  } else button.state = "normal";
+  } else button.state = 'normal';
   button.released = !button.pressed;
-  button.clicked = mouse.state.left === "new_down" && button.hovered;
+  button.clicked = mouse.state.left === 'new_down' && button.hovered;
 };
 
 export const drawButton = (ctx: CanvasRenderingContext2D, button: Button) => {
@@ -103,13 +112,13 @@ export const drawButton = (ctx: CanvasRenderingContext2D, button: Button) => {
     );
   }
   if (button.text !== null && button.text !== undefined) {
-    if (button.textColor === null) ctx.fillStyle = "White";
+    if (button.textColor === null) ctx.fillStyle = 'White';
     else
       ctx.fillStyle =
-        button.textColor[button.state === "disabled" ? "disabled" : "normal"];
+        button.textColor[button.state === 'disabled' ? 'disabled' : 'normal'];
     if (button.font !== null) ctx.font = button.font;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
     ctx.fillText(button.text, button.x, button.y);
   }
   ctx.restore();

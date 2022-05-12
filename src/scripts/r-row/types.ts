@@ -121,16 +121,22 @@ export interface InputField {
 
 export interface Mouse {
   position: { x: number; y: number };
-  _state: Record<string, 'up' | 'down'>;
   state: Record<string, 'up' | 'new_up' | 'down' | 'new_down'>;
   button: Record<string, boolean>;
 }
 
 export interface Keyboard {
-  _state: Record<string, 'up' | 'down'>;
   state: Record<string, 'up' | 'new_up' | 'down' | 'new_down'>;
   keyDown: Record<string, boolean>;
   keyUp: Record<string, boolean>;
+}
+
+export interface Touch {
+  position: { x: number; y: number };
+  state: 'start' | 'move' | 'end' | 'cancel' | null;
+  isDown: boolean;
+  isUp: boolean;
+  isClic: boolean;
 }
 
 export type Seed = string | null;
