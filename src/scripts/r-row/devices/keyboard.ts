@@ -10,6 +10,7 @@ export const getKeyboard = (): Keyboard => {
 };
 
 const createKeyboard = (): Keyboard => {
+  _state = {};
   return {
     state: {},
     keyDown: {},

@@ -96,7 +96,8 @@ const updateState = (button: Button) => {
     button.pressed = true;
   } else button.state = 'normal';
   button.released = !button.pressed;
-  button.clicked = mouse.state.left === 'new_down' && button.hovered;
+  button.clicked =
+    (mouse.state.left === 'new_down' || touch.isClic) && button.hovered;
 };
 
 export const drawButton = (ctx: CanvasRenderingContext2D, button: Button) => {

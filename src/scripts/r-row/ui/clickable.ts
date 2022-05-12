@@ -74,7 +74,8 @@ const updateState = (clickable: Clickable) => {
     clickable.pressed = true;
   } else clickable.state = 'normal';
   clickable.released = !clickable.pressed;
-  clickable.clicked = mouse.state.left === 'new_down' && clickable.hovered;
+  clickable.clicked =
+    (mouse.state.left === 'new_down' || touch.isClic) && clickable.hovered;
 };
 
 export const destroyClickable = (clickable: Clickable) => {

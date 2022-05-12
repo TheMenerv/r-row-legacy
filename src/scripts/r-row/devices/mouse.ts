@@ -11,6 +11,7 @@ export const getMouse = (): Mouse => {
 };
 
 const createMouse = (): Mouse => {
+  _state = {};
   return {
     position: { x: 0, y: 0 },
     state: {},
@@ -73,6 +74,7 @@ const update = (dt: number) => {
   const oldState = mouse.state;
   for (const button in _state) {
     const state = _state[button];
+    if (oldState[button] === undefined) oldState[button] = 'up';
     if (oldState[button].includes('up') && state === 'down') {
       mouse.state[button] = 'new_down';
     } else if (oldState[button].includes('down') && state === 'up') {

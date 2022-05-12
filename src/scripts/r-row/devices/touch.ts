@@ -46,6 +46,7 @@ export const touchRecCollide = (
 };
 
 const update = (dt: number) => {
+  getTouch();
   touch.isClic = false;
   clickTimer += dt;
   if (_state === 'start' && oldState !== 'start') {
