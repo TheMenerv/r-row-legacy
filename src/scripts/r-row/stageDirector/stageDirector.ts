@@ -32,7 +32,7 @@ export const switchStage = (name: string, params?: any) => {
   currentStage.load(params);
 };
 
-export const popStage = (data?: Record<string, any>) => {
+export const popStage = (data?: any) => {
   if (previousStage === null) return;
   switchStage(previousStage, data);
   previousStage = null;
