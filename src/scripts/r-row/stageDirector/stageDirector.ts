@@ -2,7 +2,7 @@ import {
   addDrawableToGameLoop,
   addUIDrawableToGameLoop,
   addUpdatableToGameLoop,
-} from "../gameLoop";
+} from '../gameLoop';
 
 interface Stage {
   load: (data?: Record<string, any>) => void;
@@ -21,7 +21,7 @@ export const addStage = (name: string, stage: Stage) => {
   stages[name] = stage;
 };
 
-export const switchStage = (name: string, ...params: any[]) => {
+export const switchStage = (name: string, params?: any) => {
   if (currentStage !== null) {
     currentStage.clean();
     previousStage = Object.entries(stages).filter(

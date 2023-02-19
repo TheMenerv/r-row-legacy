@@ -9,7 +9,7 @@ export type Drawable = {
 };
 
 export interface Stage {
-  load: (...params: any[]) => void;
+  load: (params?: any) => void;
   update: (dt: number) => void;
   draw: (ctx: CanvasRenderingContext2D) => void;
   drawUI: (ctx: CanvasRenderingContext2D) => void;
