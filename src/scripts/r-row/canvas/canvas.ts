@@ -5,6 +5,7 @@ export let context: CanvasRenderingContext2D = null;
 export let gameScale: number = 1;
 export const WIDTH = config.canvas.width;
 export const HEIGHT = config.canvas.height;
+export let divFade: HTMLDivElement = null;
 
 export const getCanvas = () => {
   if (canvas === null) createCanvas();
@@ -23,6 +24,7 @@ const createCanvas = () => {
   canvas.id = 'game';
   canvas.width = config.canvas.width;
   canvas.height = config.canvas.height;
+  canvas.style.zIndex = '0';
   if (config.canvas.fullScreen) {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
@@ -35,6 +37,18 @@ const createCanvas = () => {
   canvas.focus();
   window.addEventListener('mousedown', focus);
   window.addEventListener('touchstart', focus);
+  divFade = document.createElement('div');
+  divFade.setAttribute('id', 'fade');
+  divFade.style.margin = '0';
+  divFade.style.padding = '0';
+  divFade.style.top = `${getCanvasPosition().y}px`;
+  divFade.style.left = `${getCanvasPosition().x}px`;
+  divFade.style.width = `${canvas.width}px`;
+  divFade.style.height = `${canvas.height}px`;
+  divFade.style.position = 'absolute';
+  divFade.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+  divFade.style.zIndex = '2';
+  // node.appendChild(divFade);
 };
 
 const focus = () => {
@@ -60,6 +74,12 @@ const resizeCanvas = () => {
   canvas.height = height;
   getContext().scale(gameScale, gameScale);
   context.imageSmoothingEnabled = config.canvas.antiAliasing;
+  if (divFade) {
+    divFade.style.top = `${getCanvasPosition().y}px`;
+    divFade.style.left = `${getCanvasPosition().x}px`;
+    divFade.style.width = `${canvas.width}px`;
+    divFade.style.height = `${canvas.height}px`;
+  }
 };
 
 export const getCanvasPosition = () => {

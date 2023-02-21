@@ -1,7 +1,7 @@
-import config from "../../../config.json";
-import { gameScale, getCanvasPosition } from "../canvas";
-import { addUpdatableToGameLoop } from "../gameLoop";
-import { InputField } from "../types";
+import config from '../../../config.json';
+import { gameScale, getCanvasPosition } from '../canvas';
+import { addUpdatableToGameLoop } from '../gameLoop';
+import { InputField } from '../types';
 
 let inputFields: InputField[] = [];
 
@@ -13,26 +13,27 @@ export const createInputField = (
   style?: CSSStyleDeclaration
 ): InputField => {
   const position = { x, y };
-  const input = document.createElement("input");
-  input.type = type === null ? "text" : type;
-  input.placeholder = placeholder === null ? "" : placeholder;
-  input.style.position = "fixed";
+  const input = document.createElement('input');
+  input.type = type === null ? 'text' : type;
+  input.placeholder = placeholder === null ? '' : placeholder;
+  input.style.position = 'fixed';
   if (style !== null)
     for (const key in style) {
       input.style[key] = style[key];
     }
-  input.autocomplete = "off";
-  input.style.left = "-1000px";
-  input.style.top = "-1000px";
+  input.autocomplete = 'off';
+  input.style.left = '-1000px';
+  input.style.top = '-1000px';
+  input.style.zIndex = '1';
   const node = document.getElementById(config.canvas.node);
-  let form = document.createElement("form");
-  form.classList.add("gameForm");
+  let form = document.createElement('form');
+  form.classList.add('gameForm');
   node.appendChild(form);
   form.appendChild(input);
   let i = {
     position,
-    type: type === null ? "text" : type,
-    placeholder: placeholder === null ? "" : placeholder,
+    type: type === null ? 'text' : type,
+    placeholder: placeholder === null ? '' : placeholder,
     style: style,
     input,
     width: input.offsetWidth,
@@ -40,7 +41,7 @@ export const createInputField = (
     fontSize: input.style.fontSize,
     submitted: false,
     _oldSubmitted: false,
-    value: "",
+    value: '',
   };
   positionInputField(i);
   inputFields.push(i);
@@ -75,10 +76,10 @@ addUpdatableToGameLoop({ update, order: -100 });
 const resizeInputField = (inputField: InputField) => {
   inputField.input.style.width = `${inputField.width * gameScale}px`;
   inputField.input.style.height = `${inputField.height * gameScale}px`;
-  if (inputField.fontSize.slice(-2) === "em") {
+  if (inputField.fontSize.slice(-2) === 'em') {
     const size = parseFloat(inputField.fontSize.slice(0, -2));
     inputField.input.style.fontSize = `${size * gameScale}em`;
-  } else if (inputField.fontSize.slice(-2) === "px") {
+  } else if (inputField.fontSize.slice(-2) === 'px') {
     const size = parseFloat(inputField.fontSize.slice(0, -2));
     inputField.input.style.fontSize = `${size * gameScale}px`;
   }
@@ -96,15 +97,15 @@ const onClick = (event: Event) => {
   });
 };
 
-document.addEventListener("click", onClick);
+document.addEventListener('click', onClick);
 
 const onEnter = (event: KeyboardEvent) => {
-  if (event.code === "Enter") event.preventDefault();
+  if (event.code === 'Enter') event.preventDefault();
   inputFields.forEach((inputField) => {
-    if (event.code === "Enter") {
+    if (event.code === 'Enter') {
       if (
         document.activeElement === inputField.input &&
-        inputField.input.value !== ""
+        inputField.input.value !== ''
       ) {
         inputField.submitted = true;
       }
@@ -112,14 +113,14 @@ const onEnter = (event: KeyboardEvent) => {
   });
 };
 
-document.addEventListener("keydown", onEnter);
+document.addEventListener('keydown', onEnter);
 
 export const destroyInputField = (inputField: InputField) => {
   const node = document.getElementById(config.canvas.node);
-  const forms = document.getElementsByClassName("gameForm");
+  const forms = document.getElementsByClassName('gameForm');
   for (let i = 0; i < forms.length; i++) {
     const form = forms[i];
-    const iF = form.getElementsByTagName("input")[0];
+    const iF = form.getElementsByTagName('input')[0];
     if (iF === inputField.input) {
       node.removeChild(form);
     }

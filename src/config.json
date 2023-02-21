@@ -11,5 +11,11 @@
     "node": "body",
     "antiAliasing": false
   },
+  "stage": {
+    "transition": {
+      "type": "fade",
+      "delay": 0.5
+    }
+  },
   "game": {}
 }

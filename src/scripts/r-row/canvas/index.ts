@@ -1,4 +1,5 @@
 export {
+  divFade,
   canvas,
   context,
   gameScale,
@@ -8,4 +9,4 @@ export {
   getContext,
   getCanvasPosition,
   setFullScreen,
-} from "./canvas";
+} from './canvas';

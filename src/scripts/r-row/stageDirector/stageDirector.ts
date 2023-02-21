@@ -1,3 +1,6 @@
+import config from '../../../config.json';
+// import { HEIGHT, WIDTH } from '../canvas/canvas';
+import { divFade, HEIGHT, WIDTH } from '../canvas/canvas';
 import {
   addDrawableToGameLoop,
   addUIDrawableToGameLoop,
@@ -16,12 +19,34 @@ const stages: Record<string, Stage> = {};
 
 let currentStage: Stage = null;
 let previousStage: string = null;
+let fade: 'in' | 'out' | 'off' = 'off';
+let fadeAlpha: number = 0;
 
 export const addStage = (name: string, stage: Stage) => {
   stages[name] = stage;
 };
 
 export const switchStage = (name: string, params?: any) => {
+  if (currentStage === null) {
+    changeStage(name, params);
+  } else if (config.stage.transition.type === 'fade') {
+    fade = 'in';
+    const node = document.getElementById(config.canvas.node);
+    node.appendChild(divFade);
+    setTimeout(() => {
+      changeStage(name, params);
+      fade = 'out';
+      setTimeout(() => {
+        divFade.remove();
+        fade = 'off';
+      }, config.stage.transition.delay * 1000);
+    }, config.stage.transition.delay * 1000);
+  } else {
+    changeStage(name, params);
+  }
+};
+
+const changeStage = (name: string, params?: any) => {
   if (currentStage !== null) {
     currentStage.clean();
     previousStage = Object.entries(stages).filter(
@@ -32,7 +57,7 @@ export const switchStage = (name: string, params?: any) => {
   currentStage.load(params);
 };
 
-export const popStage = (data?: any) => {
+export const popStage = (data?: Record<string, any>) => {
   if (previousStage === null) return;
   switchStage(previousStage, data);
   previousStage = null;
@@ -41,6 +66,16 @@ export const popStage = (data?: any) => {
 const update = (dt: number) => {
   if (currentStage === null) return;
   currentStage.update(dt);
+  if (fade === 'in' && fadeAlpha < 1) {
+    fadeAlpha += dt / config.stage.transition.delay;
+    if (fadeAlpha > 1) fadeAlpha = 1;
+  } else if (fade === 'out' && fadeAlpha > 0) {
+    fadeAlpha -= dt / config.stage.transition.delay;
+    if (fadeAlpha < 0) fadeAlpha = 0;
+  }
+  if (fade !== 'off') {
+    divFade.style.backgroundColor = `rgba(0, 0, 0, ${fadeAlpha})`;
+  }
 };
 
 const draw = (ctx: CanvasRenderingContext2D) => {
