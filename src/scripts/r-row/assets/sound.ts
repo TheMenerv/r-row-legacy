@@ -23,7 +23,6 @@ export const createSound = (
 
 export const getSound = (sound: string) => {
   const s = soundsPlaying[sound];
-  if (s === undefined) throw new Error(`Sound "${sound}" not exist!`);
   return s;
 };
 
