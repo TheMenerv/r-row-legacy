@@ -40,6 +40,7 @@ export {
   stopAllSounds,
   destroySound,
   destroyAllSounds,
+  getSound,
   createTileSet,
   drawTile,
 } from './assets';

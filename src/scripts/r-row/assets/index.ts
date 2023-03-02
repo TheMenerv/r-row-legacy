@@ -19,4 +19,5 @@ export {
   stopAllSounds,
   destroySound,
   destroyAllSounds,
+  getSound,
 } from './sound';
