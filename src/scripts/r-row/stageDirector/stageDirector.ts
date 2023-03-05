@@ -39,6 +39,7 @@ export const switchStage = (name: string, params?: any) => {
       setTimeout(() => {
         divFade.remove();
         fade = 'off';
+        document.getElementById('game').focus();
       }, config.stage.transition.delay * 1000);
     }, config.stage.transition.delay * 1000);
   } else {
