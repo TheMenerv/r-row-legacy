@@ -21,18 +21,21 @@ let currentStage: Stage = null;
 let previousStage: string = null;
 let fade: 'in' | 'out' | 'off' = 'off';
 let fadeAlpha: number = 0;
+let waitingTransition: boolean = false;
 
 export const addStage = (name: string, stage: Stage) => {
   stages[name] = stage;
 };
 
 export const switchStage = (name: string, params?: any) => {
+  if (waitingTransition) return;
   if (currentStage === null) {
     changeStage(name, params);
   } else if (config.stage.transition.type === 'fade') {
     fade = 'in';
     const node = document.getElementById(config.canvas.node);
     node.appendChild(divFade);
+    waitingTransition = true;
     setTimeout(() => {
       changeStage(name, params);
       fade = 'out';
@@ -56,6 +59,7 @@ const changeStage = (name: string, params?: any) => {
   }
   currentStage = stages[name];
   currentStage.load(params);
+  waitingTransition = false;
 };
 
 export const popStage = (data?: Record<string, any>) => {
