@@ -1,6 +1,6 @@
 {
   "name": "r-row",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "description": "TypeScript 2D Game Engine",
   "main": "index.html",
   "scripts": {
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
+    "@jridgewell/source-map": "^0.3.2",
     "@types/bcrypt": "^5.0.0",
     "@types/css-font-loading-module": "^0.0.7",
     "@types/socket.io-client": "^3.0.0",
