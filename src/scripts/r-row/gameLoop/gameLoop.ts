@@ -1,12 +1,14 @@
-import config from "../../../config.json";
-import { context, HEIGHT, WIDTH } from "../canvas";
-import { Updatable, Drawable } from "../types";
+import config from '../../../config.json';
+import { context, HEIGHT, WIDTH } from '../canvas';
+import { Updatable, Drawable } from '../types';
 
 let lastUpdate = 0;
 export let dt = 0;
 
 const loop = (time: number) => {
   dt = (time - lastUpdate) / 1000;
+  if (time - lastUpdate < 0) dt = 0; // Prevents dt from being negative (when the game is paused for example
+  if (time - lastUpdate > 1000) dt = 0; // Prevents dt from being too big (when the game is paused for example
   lastUpdate = time;
   update(dt);
   clearScreen();
