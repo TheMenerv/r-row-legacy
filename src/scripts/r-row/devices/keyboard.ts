@@ -39,6 +39,9 @@ const update = (dt: number) => {
   const oldState = keyboard.state;
   for (const key in _state) {
     const state = _state[key];
+    if (oldState[key] === undefined) {
+      keyboard.state[key] = 'up';
+    }
     if (oldState[key].includes('up') && state === 'down')
       keyboard.state[key] = 'new_down';
     else if (oldState[key].includes('down') && state === 'up')

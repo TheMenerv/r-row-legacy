@@ -100,9 +100,10 @@ const onClick = (event: Event) => {
 document.addEventListener('click', onClick);
 
 const onEnter = (event: KeyboardEvent) => {
-  if (event.code === 'Enter') event.preventDefault();
+  if (event.code === 'Enter' || event.code === 'NumpadEnter')
+    event.preventDefault();
   inputFields.forEach((inputField) => {
-    if (event.code === 'Enter') {
+    if (event.code === 'Enter' || event.code === 'NumpadEnter') {
       if (
         document.activeElement === inputField.input &&
         inputField.input.value !== ''
