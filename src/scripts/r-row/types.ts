@@ -50,7 +50,7 @@ export interface Animation {
 
 export interface TileSet {
   image: HTMLImageElement;
-  position: { x: number; y: number };
+  // position: { x: number; y: number };
   scale: { x: number; y: number };
   tileSetWidth: number;
   tileSetHeight: number;
