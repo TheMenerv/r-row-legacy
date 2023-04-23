@@ -1,6 +1,6 @@
 {
-  "name": "r-row",
-  "version": "1.2.18",
+  "name": "r-row-legacy",
+  "version": "1.2.19",
   "description": "TypeScript 2D Game Engine",
   "main": "index.html",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheMenerv/r-row.git"
+    "url": "git+https://github.com/TheMenerv/r-row-legacy.git"
   },
   "author": "Yoan B. (Menerv)",
   "license": "CC BY-SA 4.0",
   "bugs": {
-    "url": "https://github.com/TheMenerv/r-row/issues"
+    "url": "https://github.com/TheMenerv/r-row-legacy/issues"
   },
-  "homepage": "https://github.com/TheMenerv/r-row#readme",
+  "homepage": "https://github.com/TheMenerv/r-row-legacy#readme",
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",

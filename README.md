@@ -1,8 +1,14 @@
 ![R-ROW](/favicon.ico 'R-ROW')
 
+<h2>WARNING: This (legacy) version of R-ROW was no longer maintained.</h2>
+
+[Please see the new R-ROW Project here!](https://github.com/TheMenerv/r-row)
+
+---
+
 R-ROW (pronounced arrow) is a 2D game engine written in TypeScript.
 
-You can see the [source code](https://github.com/TheMenerv/r-row-demo) of a demo project and test it on [itch.io](https://menerv.itch.io/r-row-demo)
+~~You can see the [source code](https://github.com/TheMenerv/r-row-demo) of a demo project and test it on [itch.io](https://menerv.itch.io/r-row-demo)~~
 
 ---
 
@@ -76,4 +82,4 @@ but we recommand to add theses folders for your assets:
 
 ## Manual
 
-See the [wiki](https://github.com/TheMenerv/r-row/wiki) to learn how to use the engine.
+See the [wiki](https://github.com/TheMenerv/r-row-legacy/wiki) to learn how to use the engine.
